@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Proof of addresses</h1>
+
+<div id="proof_of_addresses">
+  <% @proof_of_addresses.each do |proof_of_address| %>
+    <%= render proof_of_address %>
+    <p>
+      <%= link_to "Show this proof of address", proof_of_address %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New proof of address", new_proof_of_address_path %>

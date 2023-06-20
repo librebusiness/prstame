@@ -77,3 +77,4 @@ group :test do
 end
 
 gem "devise"
+gem 'chart-js-rails', '~> 0.1.7'

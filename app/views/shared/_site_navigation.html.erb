@@ -1,5 +1,12 @@
-<div class="container">
-  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
+<% if user_signed_in? %>
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between bg-white shadow py-2">
+    <div class="ms-auto text-end">
+      <%= link_to tag.i('', class: 'bi bi-person-circle'), dashboard_path, class:"btn btn-link" %>
+      <%= link_to tag.i('', class: 'bi bi-box-arrow-right'), destroy_user_session_path, class:"btn btn-link me-2", data: { turbo_method: :delete, turbo_confirm: 'Sure?' }, method: :delete %>
+    </div>
+  </header>
+<% else %>
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between text-bg-light py-3">
     <%= link_to tag.i('', class:'bi bi-app-indicator h3 mb-0'), root_path, class:"d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" %>
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
@@ -21,4 +28,4 @@
       <% end %>
     </div>
   </header>
-</div>
+<% end %>

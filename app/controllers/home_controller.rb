@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  before_action :redirect_if_user_signed_in
+
   def index
   end
 
@@ -28,4 +30,11 @@ class HomeController < ApplicationController
 
   def team
   end
+
+  private
+    def redirect_if_user_signed_in
+      if user_signed_in?
+        redirect_to :dashboard
+      end
+    end
 end
