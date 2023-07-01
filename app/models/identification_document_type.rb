@@ -1,2 +1,0 @@
-class IdentificationDocumentType < ApplicationRecord
-end

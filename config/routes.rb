@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  resources :proof_of_addresses
-  devise_for :customers
-  devise_for :managers
-  devise_for :staffs, only: [:sessions, :passwords]
-  devise_for :admins, only: [:sessions, :passwords]
+  namespace :admin do
+    get 'dashboard', to: 'dashboard#index'
+    get 'settings', to: 'dashboard#settings'
+  end
 
   get 'dashboard', to: 'dashboard#index'
   get 'settings', to: 'dashboard#settings'
@@ -18,4 +17,9 @@ Rails.application.routes.draw do
   get 'team', to: 'home#team'
 
   root 'home#index'
+  
+  devise_for :customers
+  devise_for :managers
+  devise_for :staffs, only: [:sessions, :passwords]
+  devise_for :admins, only: [:sessions, :passwords]
 end

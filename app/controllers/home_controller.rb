@@ -34,7 +34,7 @@ class HomeController < ApplicationController
   private
     def check_for_auth!
       if admin_signed_in?
-        redirect_to dashboard_url
+        redirect_to admin_dashboard_url
       end
     end
 end

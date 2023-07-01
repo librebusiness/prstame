@@ -19,12 +19,18 @@ social_service_card = {
 	description: 'Tarjeta de seguro social o de salud'
 }
 
-IdentificationDocumentType.create([
-	cedula,
-	passport,
-	driver_license,
-	social_service_card,
-])
+# IdentificationDocumentType.create([
+# 	cedula,
+# 	passport,
+# 	driver_license,
+# 	social_service_card,
+# ])
+
+Customer.create({
+	email: 'customer@otonielreyes.com',
+	password: '123456',
+	password_confirmation: '123456',
+})
 
 manager = Manager.new({
 	email: 'lender@otonielreyes.com',
@@ -37,7 +43,7 @@ Staff.create({
 	email: 'staff@otonielreyes.com',
 	password: '123456',
 	password_confirmation: '123456',
-	manager_id: maanger.id
+	manager_id: manager.id
 })
 
 Admin.create({

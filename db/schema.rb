@@ -10,24 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_17_084728) do
-  create_table "identification_document_types", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "proof_of_addresses", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "document"
-    t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_proof_of_addresses_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
 ActiveRecord::Schema[7.0].define(version: 2023_07_01_215433) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -49,46 +31,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_01_215433) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "role", default: "staff"
-    t.integer "admin_id"
-    t.string "firstname"
-    t.string "lastname"
-    t.date "date_of_birth"
-    t.string "gender"
-    t.string "nationality"
-    t.string "address_type"
-    t.string "country"
-    t.string "state"
-    t.string "city"
-    t.string "address"
-    t.string "zip_code"
-    t.string "mobile_phone"
-    t.string "home_phone"
-    t.string "work_phone"
-    t.string "public_email"
-    t.integer "risk_tolerance"
-    t.boolean "investment_accreditation"
-    t.boolean "investment_qualification"
-    t.integer "identification_document_type_id"
-    t.string "identification_number"
-    t.date "identificatin_expiry_date"
-    t.string "identification_issued_country"
-    t.string "identification_status"
-    t.string "communication_preferences"
-    t.boolean "agree_terms"
-    t.boolean "agree_bair_agreement"
-    t.boolean "agree_privacy_policy"
-    t.index ["admin_id"], name: "index_users_on_admin_id"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["identification_document_type_id"], name: "index_users_on_identification_document_type_id"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
-  end
-
-  add_foreign_key "proof_of_addresses", "users"
-  add_foreign_key "users", "identification_document_types"
-  add_foreign_key "users", "users", column: "admin_id"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
