@@ -1,8 +1,7 @@
-<main class="form-signin w-100 m-auto">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <img class="mb-4 d-block mx-auto" src="//picsum.photos/72/57" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Sign In</h1>
-    <%= render "devise/shared/error_messages", resource: resource %>
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field">
       <%= f.label :email, "Email" %><br />
@@ -25,8 +24,7 @@
     <div class="actions">
       <%= f.submit "Sign up", class: "btn btn-primary w-100 py-2" %>
     </div>
+    <%= render "devise/shared/links" %>    
+<% end %>
 
-    <%= render "devise/shared/links" %>
-    
-  <% end %>
-</main>
+<%= render "devise/shared/links" %>

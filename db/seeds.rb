@@ -26,28 +26,22 @@ IdentificationDocumentType.create([
 	social_service_card,
 ])
 
-# Create some users
-super_admin = User.new({
-	email: 'otoniel@otonielreyes.com',
-	password: '123456',
-	password_confirmation: '123456',
-	role: 'super-admin'
-})
-super_admin.save()
-
-lender = User.new({
+manager = Manager.new({
 	email: 'lender@otonielreyes.com',
 	password: '123456',
 	password_confirmation: '123456',
-	role: 'lender'
 })
-lender.save()
+manager.save
 
-staff = User.new({
+Staff.create({
 	email: 'staff@otonielreyes.com',
 	password: '123456',
 	password_confirmation: '123456',
-	role: 'staff',
-	admin_id: lender.id
+	manager_id: maanger.id
 })
-staff.save()
+
+Admin.create({
+	email: 'otoniel@otonielreyes.com',
+	password: '123456',
+	password_confirmation: '123456',
+})

@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   resources :proof_of_addresses
+  devise_for :customers
+  devise_for :managers
+  devise_for :staffs, only: [:sessions, :passwords]
+  devise_for :admins, only: [:sessions, :passwords]
+
   get 'dashboard', to: 'dashboard#index'
   get 'settings', to: 'dashboard#settings'
-  devise_for :users
-  root to: 'home#index'
   get 'about', to: 'home#about'
   get 'contact', to: 'home#contact'
   get 'faqs', to: 'home#faqs'
@@ -13,8 +16,6 @@ Rails.application.routes.draw do
   get 'products', to: 'home#products'
   get 'terms', to: 'home#terms'
   get 'team', to: 'home#team'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root 'home#index'
 end

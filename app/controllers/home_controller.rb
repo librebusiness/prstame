@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :redirect_if_user_signed_in
+  before_action :check_for_auth!
 
   def index
   end
@@ -32,9 +32,9 @@ class HomeController < ApplicationController
   end
 
   private
-    def redirect_if_user_signed_in
-      if user_signed_in?
-        redirect_to :dashboard
+    def check_for_auth!
+      if admin_signed_in?
+        redirect_to dashboard_url
       end
     end
 end
