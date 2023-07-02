@@ -1,2 +1,30 @@
-<h1>Admin::Dashboard#index</h1>
-<p>Find me in app/views/admin/dashboard/index.html.erb</p>
+<div class="d-flex justify-content-between align-items-center mb-4">
+	<h2 class="card-title">Managers</h2>
+	<%= link_to 'Export', admin_managers_path(format: :json), class: 'btn btn-sm btn-primary' %>
+</div>
+
+<table class="table table-striped shadow">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Registration Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @managers.each_with_index do |manager, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= manager.name %></td>
+        <td><%= link_to manager.email, 'mailto:'+manager.email %></td>
+        <td><%= Date.new(manager.created_at.year, manager.created_at.month, manager.created_at.day).to_s %></td>
+        <td>
+          <%= link_to tag.i('', class:'bi bi-box-arrow-up-right'), admin_path(manager.id), class: 'btn btn-primary' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

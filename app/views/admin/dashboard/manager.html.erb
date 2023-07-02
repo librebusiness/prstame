@@ -1,0 +1,16 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+	<h2 class="card-title">Manager Details</h2>
+	<%= link_to 'Go Back', admin_dashboard_path, class: 'btn btn-sm btn-primary' %>
+</div>
+
+<div class="card">
+	<div class="card-body">
+		<div class="row">
+			<div class="col-3 text-center my-4">
+				<img src="//picsum.photos/128" class="mx-auto d-block rounded-circle">
+				<h5 class="fw-bold"><%= @manager.name %></h5>
+				<h6 class=""><%= @manager.email %></h6>
+			</div>
+		</div>
+	</div>
+</div>

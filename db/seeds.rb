@@ -27,12 +27,14 @@ social_service_card = {
 # ])
 
 Customer.create({
+	name: 'Customer 1',
 	email: 'customer@otonielreyes.com',
 	password: '123456',
 	password_confirmation: '123456',
 })
 
 manager = Manager.new({
+	name: 'Manager 1',
 	email: 'lender@otonielreyes.com',
 	password: '123456',
 	password_confirmation: '123456',
@@ -40,6 +42,7 @@ manager = Manager.new({
 manager.save
 
 Staff.create({
+	name: 'Staff 1',
 	email: 'staff@otonielreyes.com',
 	password: '123456',
 	password_confirmation: '123456',
@@ -47,6 +50,7 @@ Staff.create({
 })
 
 Admin.create({
+	name: 'Otoniel Reyes',
 	email: 'otoniel@otonielreyes.com',
 	password: '123456',
 	password_confirmation: '123456',

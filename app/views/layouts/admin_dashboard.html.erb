@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
     <title>Prstame</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -12,7 +12,55 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body class="bg-light">
+    <div class="d-flex">
+      <div style="height: 100vh;" class="text-bg-primary">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <%= link_to tag.i('', class:'bi bi-people-fill'), admin_dashboard_path, class:"nav-link text-white" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to tag.i('', class:'bi bi-person-gear'), admin_profile_path, class:"nav-link text-white" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to tag.i('', class:'bi bi-gear-wide-connected'), admin_settings_path, class:"nav-link text-white" %>
+          </li>
+        </ul>
+      </div>
+      <div style="flex: 1 0 auto;">
+        <div class="mb-4 py-1 bg-white shadow" style="border-bottom: 1px solid light-gray;">
+          <div class="container d-flex justify-content-end position-relative">
+
+            <%= link_to tag.img('', src:'/apple-touch-icon.png', class: 'me-2', style:'width: 24px; height: 24px;') + ' Prstame', admin_dashboard_path, class: "mx-auto text-primary fw-bold position-absolute text-decoration-none d-flex align-items-center", style:"top: 50%; left: 50%; transform: translate(-50%, -50%);" %>
+
+            <div class="dropdown">
+              <div class="d-flex align-items-center">
+                <div class="me-2 d-flex flex-column text-end">
+                  <span style="font-size: 10px;" class="fw-bold"><%= current_admin.name %></span>
+                  <span style="font-size: 10px;" class="text-muted"><%= current_admin.email %></span>
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                  <button class="dropdown-toggle btn btn-sm btn-light" href="#" id="userDropdown" role="button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- <img style="height: 24px; width: 24px;" src="//picsum.photos/24" class="avatar rounded-circle" alt="Avatar"> -->
+                    <i class="bi bi-person-circle fs-6"></i>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                    <li><%= link_to "Profile", admin_profile_path, class: "dropdown-item" %></li>
+                    <li><%= link_to "Settings", admin_settings_path, class: "dropdown-item" %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to "Log out", destroy_admin_session_path, class: "dropdown-item", data: {turbo_method: :delete, turbo_confirm: "Sure you want to log out?"}, method: :delete, confirm: "Sure you want to log out?" %></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
     <% if notice %>
       <div role="alert" class="alert alert-info alert-dismissible fade show position-fixed position-fixed" style="z-index: 2000; bottom: 24px; right: 24px;">
         <%= notice %>
@@ -24,8 +72,6 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     <% end %>
-
-    <%= yield %>
 
   </body>
 </html>

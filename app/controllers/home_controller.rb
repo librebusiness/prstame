@@ -36,5 +36,17 @@ class HomeController < ApplicationController
       if admin_signed_in?
         redirect_to admin_dashboard_url
       end
+
+      if manager_signed_in?
+        redirect_to manager_dashboard_url
+      end
+
+      if staff_signed_in?
+        redirect_to staff_dashboard_url
+      end
+
+      if customer_signed_in?
+        redirect_to customer_dashboard_url
+      end
     end
 end
